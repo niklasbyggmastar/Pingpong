@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Phaser test</title>
+    <meta name="viewport" content="width=device-width, height=device-height initial-scale=1.0">
+    <style media="screen">
+      body{
+        background-color: rgb(51,51,51);
+      }
+    </style>
+    <script src="lib/phaser.min.js"></script>
+    <script src="boot.js"></script>
+    <script src="preload.js"></script>
+    <script src="menu.js"></script>
+    <script src="thegame.js"></script>
+    <script src="multiplayer.js"></script>
+    <script src="multiplayerGameOver.js"></script>
+    <script src="gameover.js"></script>
+
+  </head>
+  <body>
+    <div id="gameDiv"></div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    (function() {
+      var game = new Phaser.Game(700, 580, Phaser.CANVAS, "gameDiv");
+      game.state.add("Boot",boot);
+      game.state.add("Preload",preload);
+      game.state.add("Menu",menu);
+      game.state.add("TheGame",thegame);
+      game.state.add("Multiplayer",multiplayer);
+      game.state.add("GameOver",gameover);
+      game.state.add("multiplayerGameOver",multiplayerGameOver);
+      game.state.start("Boot");
+    })();
+    </script>
+  </body>
+</html>
